@@ -19,7 +19,7 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
-    background: #f0f0f5;
+    background: ${props => props.theme.colors.background};
   }
 
   body, input, button {
@@ -61,10 +61,11 @@ export default createGlobalStyle`
   .button {
     width: 100%;
     height: 60px;
-    background: #e02041;
-    border: 0;
+    background: ${props => props.theme.colors.primary};
+    /* border: 0; */
+    border: ${props => props.theme.title === 'light' ? 0 : '2px solid #fff'};
     border-radius: 8px;
-    color: #f0f0f5;
+    color: #fff;
     font-weight: bold;
     margin-top: 16px;
     display: inline-block;
@@ -73,16 +74,18 @@ export default createGlobalStyle`
     font-size: 18px;
     line-height: 60px;
     transition: filter 0.3s;
+    transition: border-color 0.3s;
   }
 
   .button:hover {
     filter: brightness(90%);
+    border-color: #666;
   }
 
   .back-link {
       font-size: 18px;
       font-weight: 500;
-      color: #41414d;
+      color: ${props => props.theme.colors.text};
       margin-top: 40px;
       transition: opacity 0.3s;
 
