@@ -1,76 +1,88 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: 20,
-  },
+export const Container = styled.SafeAreaView`
+  flex: 1;
+  padding: 20px 24px 0px 24px;
+`;
 
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
+export const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-  incident: {
-    padding: 24,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    marginBottom: 16,
-    marginTop: 48,
-  },
+export const Title = styled.Text`
+  font-size: 30px;
+  margin-bottom: 16px;
+  color: #13131a;
+  font-weight: bold;
+`;
 
-  incidentProperty: {
-    fontSize: 14,
-    marginTop: 24,
-    color: '#41414d',
-  },
+export const Description = styled.Text`
+  font-size: 16px;
+  line-height: 24px;
+  color: #737380;
+`;
 
-  incidentValue: {
-    marginTop: 8,
-    fontSize: 15,
-    color: '#737380',
-  },
+export const Incident = styled.View`
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 16px;
+  margin-top: 20px;
+`;
 
-  contactBox: {
-    padding: 24,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    marginBottom: 16, 
-  },
+export const IncidentProperty = styled.Text`
+  font-size: 14px;
+  color: #41414d;
+  margin-top: 24px;
+`;
 
-  heroTitle: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#13131a',
-    lineHeight: 30,
-  },
+export const IncidentValue = styled.Text`
+  margin-top: 8px;
+  font-size: 15px;
+  margin-bottom: 24px;
+  color: #737380;
+`;
 
-  heroDescription: {
-    fontSize: 15,
-    color: '#737380',
-    marginTop: 16,
-  },
+export const ContactBox = styled.View`
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 16px;
+`;
 
-  actions: {
-    marginTop: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
+export const HeroTitle = styled.Text`
+  font-weight: bold;
+  font-size: 20px;
+  color: #13131a;
+  line-height: 30px;
+`;
 
-  action: {
-    backgroundColor: '#e02041',
-    borderRadius: 8,
-    height: 50,
-    width: '48%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+export const HeroDescription = styled.Text`
+  font-size: 15px;
+  color: #737380;
+  margin-top: 16px;
+`;
 
-  actionText: {
-    color: '#fff',
-    fontSize: 15,
-    fontWeight: 'bold',
-  }
-});
+
+export const Actions = styled.View`
+  margin-top: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const Action = styled.TouchableOpacity`
+  background-color: #e02041;
+  border-radius: 8px;
+  height: 50px;
+  width: 48%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ActionText = styled.Text`
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+`;

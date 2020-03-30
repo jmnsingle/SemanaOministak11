@@ -1,16 +1,34 @@
-import React, { useEffect, useState } from 'react';
-// import { useNavigation } from '@react-navigation/native';
-import { View, SafeAreaView, FlatList, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import api from '../../services/api';
+import Context from '../../styles/thems/context';
 
-import styles from './styles';
+import { 
+  Container, 
+  Header, 
+  HeaderText, 
+  HeaderTextBold, 
+  Title, 
+  Description, 
+  IncidentList,
+  Incident,
+  IncidentProperty,
+  IncidentValue,
+  DetailButton,
+  DetailButtonText,
+  ToggleThemeButton,
+  ThemeIcon,
+} from './styles';
 
 import logo from '../../assets/logo.png';
 
 export default function Incidents({ navigation }) {
-  // const navigation = useNavigation();
+  const { title } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(Context);
+
   const [ incidents, setIncidents ] = useState([]);
   const [ total, setTotal ] = useState(0);
   const [ page, setPage ] = useState(1);
@@ -44,48 +62,52 @@ export default function Incidents({ navigation }) {
   },[])
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+    <Container >
+      <Header>
         <Image source={logo} />
-        <Text style={styles.headerText}>Total de <Text style={styles.headerTextBold}>{total} casos</Text></Text>
-      </View>
 
-      <Text style={styles.title}>Bem-vindo !</Text>
-      <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia.</Text>
+        <ToggleThemeButton onPress={toggleTheme}>
+          <ThemeIcon name={title === 'light' ? 'sun' : 'moon'} />
+        </ToggleThemeButton>
 
-      <FlatList 
-        style={styles.incidentList}
+        <HeaderText>Total de <HeaderTextBold>{total} casos</HeaderTextBold></HeaderText>
+
+      </Header>
+
+      <Title>Bem-vindo !</Title>
+      <Description>Escolha um dos casos abaixo e salve o dia.</Description>
+
+      <IncidentList 
         data={incidents}
         keyExtractor={incident => String(incident.id)}
         showsVerticalScrollIndicator
         onEndReached={loadIncidents}
         onEndReachedThreshold={0.01}
         renderItem={({item: incident}) => (
-          <View style={styles.incident}>
-            <Text style={styles.incidentProperty}>ONG: </Text>
-            <Text style={styles.incidentValue}>{incident.name}</Text>
+          <Incident>
+            <IncidentProperty>ONG: </IncidentProperty>
+            <IncidentValue>{incident.name}</IncidentValue>
 
-            <Text style={styles.incidentProperty}>CASO: </Text>
-            <Text style={styles.incidentValue}>{incident.title}</Text>
+            <IncidentProperty>CASO: </IncidentProperty>
+            <IncidentValue>{incident.title}</IncidentValue>
 
-            <Text style={styles.incidentProperty}>VALOR: </Text>
-            <Text style={styles.incidentValue}>{Intl.NumberFormat('pt-BR', {
+            <IncidentProperty>VALOR: </IncidentProperty>
+            <IncidentValue>{Intl.NumberFormat('pt-BR', {
                 style: 'currency', 
                 currency: 'BRl' 
               }).format(incident.value)}
-            </Text>
+            </IncidentValue>
 
-            <TouchableOpacity 
-              style={styles.detailButton}
+            <DetailButton 
               onPress={() => navigation.navigate('Details', { incident })}
             >
-              <Text style={styles.detailButtonText} >Ver mais detalhes</Text>
+              <DetailButtonText>Ver mais detalhes</DetailButtonText>
               <Icon name='arrow-right' size={16} color='#e02041' />
-            </TouchableOpacity>
-          </View>
+            </DetailButton>
+          </Incident>
         )}
       />
       {/* {loading && <ActivityIndicator style={{marginTop: 50}} size="large" color='#e02041' />} */}
-    </SafeAreaView>
+    </Container>
   );
 }

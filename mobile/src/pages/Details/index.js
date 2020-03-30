@@ -5,7 +5,19 @@ import { useRoute } from '@react-navigation/native';
 
 import logo from '../../assets/logo.png';
 
-import styles from './styles';
+import {
+  Container,
+  Header,
+  Incident,
+  IncidentProperty,
+  IncidentValue,
+  ContactBox,
+  HeroTitle,
+  HeroDescription,
+  Actions,
+  Action,
+  ActionText,
+} from './styles';
 
 export default function Details({ navigation }) {
   //const incident = navigation.getParam('incident');
@@ -27,46 +39,46 @@ export default function Details({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <Container>
+      <Header>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name='arrow-left' size={28} color='#e82041' />
         </TouchableOpacity>
 
         <Image source={logo} />
-      </View>
+      </Header>
 
-      <View style={styles.incident}> 
-        <Text style={[styles.incidentProperty, { marginTop: 0 }]}>ONG: </Text>
-        <Text style={styles.incidentValue}>{incident.name} de {incident.city}/{incident.uf}</Text>
+      <Incident> 
+        <IncidentProperty style={{ marginTop: 0 }}>ONG: </IncidentProperty>
+        <IncidentValue>{incident.name} de {incident.city}/{incident.uf}</IncidentValue>
 
-        <Text style={styles.incidentProperty}>CASO: </Text>
-        <Text style={styles.incidentValue}>{incident.title}</Text>
+        <IncidentProperty>CASO: </IncidentProperty>
+        <IncidentValue>{incident.title}</IncidentValue>
 
-        <Text style={styles.incidentProperty}>VALOR: </Text>
-        <Text style={styles.incidentValue}>{Intl.NumberFormat('pt-BR', {
+        <IncidentProperty>VALOR: </IncidentProperty>
+        <IncidentValue>{Intl.NumberFormat('pt-BR', {
             style: 'currency', 
             currency: 'BRl' 
           }).format(incident.value)}
-        </Text>
-      </View>
+        </IncidentValue>
+      </Incident>
 
-      <View style={styles.contactBox} >
-        <Text style={styles.heroTitle}>Salve o dia!</Text>
-        <Text style={styles.heroTitle}>Seja o heroi deste caso.</Text>
+      <ContactBox>
+        <HeroTitle>Salve o dia!</HeroTitle>
+        <HeroTitle>Seja o heroi deste caso.</HeroTitle>
       
-        <Text style={styles.heroDescription} >Entre em contato:</Text>
+        <HeroDescription>Entre em contato:</HeroDescription>
 
-        <View style={styles.actions}>
-          <TouchableOpacity onPress={sendWhatsapp} style={styles.action}>
-            <Text style={styles.actionText}>WhatsApp</Text>
-          </TouchableOpacity>
+        <Actions>
+          <Action onPress={sendWhatsapp}>
+            <ActionText>WhatsApp</ActionText>
+          </Action>
 
-          <TouchableOpacity onPress={sendEmail} style={styles.action}>
-            <Text style={styles.actionText}>E-mail</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+          <Action onPress={sendEmail}>
+            <ActionText>E-mail</ActionText>
+          </Action>
+        </Actions>
+      </ContactBox>
+    </Container>
   );
 }

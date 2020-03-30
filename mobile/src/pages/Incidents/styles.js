@@ -1,74 +1,93 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/Feather';
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: 20,
-    backgroundColor: '#f0f0f0'
-  },
+Icon.loadFont();
 
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
+export const Container = styled.SafeAreaView`
+    flex: 1;
+    padding: 20px 24px 0px 24px;
+    /* background: #f0f0f0; */
+    background-color: ${({ theme }) => theme.colors.primary};
+`;
 
-  headerText: {
-    fontSize: 15,
-    color: '#737380',
-  },
-  
-  headerTextBold: {
-    fontWeight: 'bold',
-  },
+export const Header = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
 
-  title: {
-    fontSize: 30,
-    marginBottom: 16,
-    color: '#13131a',
-    fontWeight: 'bold',
-  },
+export const HeaderText = styled.Text`
+    font-size: 15px;
+    color: #737380;
+`;
 
-  description: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#737380',
-  },
-  
-  incidentList: {
-    marginTop: 32,
-  },
+export const HeaderTextBold = styled.Text`
+    font-weight: bold;
+`;
 
-  incident: {
-    padding: 24,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    marginBottom: 16,
-  },
+export const Title = styled.Text`
+    font-size: 30px;
+    margin-bottom: 16px;
+    color: #13131a;
+    font-weight: bold;
+`;
 
-  incidentProperty: {
-    fontSize: 14,
-    color: '#41414d',
-  },
+export const Description = styled.Text`
+    font-size: 16px;
+    line-height: 24px;
+    color: #737380;
+`;
 
-  incidentValue: {
-    marginTop: 8,
-    fontSize: 15,
-    marginBottom: 24,
-    color: '#737380',
-  },
+export const IncidentList = styled.FlatList`
+    margin-top: 32px;
+`;
 
-  detailButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
+export const Incident = styled.View`
+    padding: 24px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 16px;
+`;
 
-  detailButtonText: {
-    color: '#e02041',
-    fontSize: 15,
-    fontWeight: 'bold',
-  }
+export const IncidentProperty = styled.Text`
+    font-size: 14px;
+    color: #41414d;
+`;
 
-});
+export const IncidentValue = styled.Text`
+    margin-top: 8px;
+    font-size: 15px;
+    margin-bottom: 24px;
+    color: #737380;
+`;
+
+export const DetailButton = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const DetailButtonText = styled.Text`
+    color: #e02041;
+    font-size: 15px;
+    font-weight: bold;
+`;
+
+export const ToggleThemeButton = styled.TouchableOpacity`
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: ${({theme}) => theme.colors.primary};
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 5px black;
+  elevation: 5;
+`;
+
+export const ThemeIcon = styled(Icon).attrs({
+  size: 30,
+  color: '#feb72b',
+})``;
