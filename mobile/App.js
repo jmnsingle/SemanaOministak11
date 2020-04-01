@@ -2,10 +2,10 @@ import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
 import React, { useCallback, useState, useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { useColorScheme } from 'react-native-appearance';
+// import { useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'styled-components';
 
 import Context from './src/styles/thems/context';
@@ -41,7 +41,6 @@ export default function App() {
   }, [deviceTheme, persistTheme]);
 
   const toggleTheme = useCallback(() => {
-    console.log('teste')
     persistTheme(theme.title === 'light' ? 'dark' : 'light');
   }, [theme.title, persistTheme]);
 
@@ -49,7 +48,7 @@ export default function App() {
   return (
     <Context.Provider value={{ toggleTheme }}>
       <ThemeProvider theme={theme}>
-        <StatusBar barStyle="dark-content" backgroundColor="#f0f0f0" />
+        <StatusBar barStyle={theme.title === 'dark' ? 'ligh-content' : 'dark-content'} backgroundColor={theme.title === 'dark' ? '#000' : '#f0f0f0'} />
         <Routes />
       </ThemeProvider>
     </Context.Provider>

@@ -6,8 +6,8 @@ Icon.loadFont();
 export const Container = styled.SafeAreaView`
     flex: 1;
     padding: 20px 24px 0px 24px;
-    /* background: #f0f0f0; */
-    background-color: ${({ theme }) => theme.colors.primary};
+    background: ${({theme}) => theme.colors.background};
+
 `;
 
 export const Header = styled.View`
@@ -18,7 +18,7 @@ export const Header = styled.View`
 
 export const HeaderText = styled.Text`
     font-size: 15px;
-    color: #737380;
+    color: ${({theme}) => theme.colors.textStrong};
 `;
 
 export const HeaderTextBold = styled.Text`
@@ -28,14 +28,14 @@ export const HeaderTextBold = styled.Text`
 export const Title = styled.Text`
     font-size: 30px;
     margin-bottom: 16px;
-    color: #13131a;
+    color: ${({theme}) => theme.colors.title};
     font-weight: bold;
 `;
 
 export const Description = styled.Text`
     font-size: 16px;
     line-height: 24px;
-    color: #737380;
+    color: ${({theme}) => theme.colors.textStrong};
 `;
 
 export const IncidentList = styled.FlatList`
@@ -45,20 +45,22 @@ export const IncidentList = styled.FlatList`
 export const Incident = styled.View`
     padding: 24px;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: ${({theme}) => theme.colors.cardBackground};
     margin-bottom: 16px;
+    border: ${({theme}) => theme.title === 'dark' ? '2px solid #fff' : 0};
 `;
 
 export const IncidentProperty = styled.Text`
-    font-size: 14px;
-    color: #41414d;
+    font-size: 16px;
+    font-weight: bold;
+    color: ${({theme}) => theme.colors.text};
 `;
 
 export const IncidentValue = styled.Text`
     margin-top: 8px;
     font-size: 15px;
     margin-bottom: 24px;
-    color: #737380;
+    color: ${({theme}) => theme.colors.textStrong};
 `;
 
 export const DetailButton = styled.TouchableOpacity`
@@ -68,19 +70,16 @@ export const DetailButton = styled.TouchableOpacity`
 `;
 
 export const DetailButtonText = styled.Text`
-    color: #e02041;
+    color: ${({theme}) => theme.colors.primary};
     font-size: 15px;
     font-weight: bold;
 `;
 
 export const ToggleThemeButton = styled.TouchableOpacity`
-  position: absolute;
-  top: 35px;
-  right: 35px;
   width: 40px;
   height: 40px;
+  background: ${({theme}) => theme.colors.cardBackground};
   border-radius: 20px;
-  background-color: ${({theme}) => theme.colors.primary};
   align-items: center;
   justify-content: center;
   box-shadow: 5px 5px 5px black;

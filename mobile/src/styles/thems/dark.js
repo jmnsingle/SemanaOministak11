@@ -2,14 +2,13 @@ export default {
   title: 'dark',
 
   colors: {
-    primary: '#000',
-    secundary: '#000',
+    primary: '#E02041',
+    secundary: '#111',
 
-    background: '#000',
-    secundaryBackground: '#000',
-    CardBackground: '#000',
-    title: '#000',
-    textStrong: '#000',
-    text: '#000',
+    background: '#151515',
+    cardBackground: '#000',
+    title: '#fff',
+    textStrong: '#fff',
+    text: '#fff',
   },
 };
