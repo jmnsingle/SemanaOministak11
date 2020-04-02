@@ -14,7 +14,7 @@ export const Container = styled.div`
     width: 100%;
     padding: 96px;
     background: ${props => props.theme.colors.backgroundCard};
-    /* box-shadow: 0 0 100px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 
     display: flex;

@@ -13,7 +13,8 @@ export const Container = styled.div`
   .content {
     width: 100%;
     padding: 96px;
-    background: #f0f0f5;
+    background: ${props => props.theme.colors.backgroundCard};
+    border: ${props => props.theme.title === 'light' ? 0 : '2px solid #fff'};
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 
@@ -30,11 +31,12 @@ export const Container = styled.div`
   .content section h1 {
     margin: 64px 0 32px;
     font-size: 32px;
+    color: ${props => props.theme.colors.text};
   }
 
   .content section p {
     font-size: 18px;
-    color: #737380;
+    color: ${props => props.theme.colors.placeholder};
     line-height: 32px;
   }
 
